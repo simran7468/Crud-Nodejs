@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
-
 const Product = require("./database");
 
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
+app.use(express.urlencoded({extended:false}))
 
 
-app.get('/', (req,res)=>{
+app.get('/',async (req,res)=>{
+    const products = await Product.find({});
     res.render("add")
 })
 
@@ -18,7 +19,7 @@ app.post('/add', async(req,res)=>{
 })
 
 app.get('/add', (req,res)=>{
-    res.render('add')
+    res.render('add');
 })
 
 app.get("/edit/:id",async(req,res)=>{
