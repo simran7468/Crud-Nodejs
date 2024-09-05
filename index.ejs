@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (products!="") { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>PID</th>
+                    <th>PNAME</th>
+                    <th>PPRICE</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach((product,index) => { %>
+                 <tr>
+                    <td><%= index+id %></td>
+                    <td><%= products.name %></td>
+                    <td><%= products.price %></td>
+                    <td>
+                        <a href="/edit/<%= product._id %>">Update</a>
+                        <a href="/delete/<%= product._id %>">Delete</a>
+                    </td>
+                 </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else{ %>
+        <h1>NO USER FOUND</h1>
+        <% }  %>   
+    
+</body>
+</html>
